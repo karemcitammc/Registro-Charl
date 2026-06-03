@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registro de Participantes</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#f5f7fa;
+display:flex;
+justify-content:center;
+padding:40px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:15px;
+width:500px;
+box-shadow:0 0 20px rgba(0,0,0,.1);
+}
+
+.logo{
+text-align:center;
+}
+
+.logo img{
+width:150px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin-top:5px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:8px;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#ff6b57;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+<div class="logo">
+<img src="https://tu-logo.png">
+</div>
+
+<h2>🎓 Registro de Participantes</h2>
+
+<form id="registro">
+
+<label>Nombres</label>
+<input name="nombres">
+
+<label>Apellidos</label>
+<input name="apellidos">
+
+<label>DNI</label>
+<input name="dni">
+
+<label>Correo</label>
+<input name="correo">
+
+<button type="submit">
+🚀 Registrarme
+</button>
+
+</form>
+
+</div>
+
+<script>
+
+document.getElementById("registro")
+.addEventListener("submit", async(e)=>{
+
+e.preventDefault();
+
+const datos={
+nombres:e.target.nombres.value,
+apellidos:e.target.apellidos.value,
+dni:e.target.dni.value,
+correo:e.target.correo.value
+};
+
+await fetch(
+"AQUI_VA_TU_WEBHOOK",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify(datos)
+}
+);
+
+alert("Registro enviado correctamente");
+
+});
+
+</script>
+
+</body>
+</html>
